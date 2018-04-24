@@ -1,0 +1,36 @@
+package account;
+
+import java.io.*;
+import java.util.Scanner;
+
+public class Input {
+	public Input() {
+		super();
+	}
+	
+	public static void display() {
+		
+		
+		
+		
+		Scanner reader = new Scanner(System.in);
+		
+		System.out.println("Please enter your account number: ");
+		int n = reader.nextInt();
+		
+		System.out.println("The number you entered is: " + n);
+		
+		//int n = reader.nextInt();
+		System.out.println("Please enter your first name: ");
+		String fname = reader.nextLine();
+		
+		System.out.println("The name you entered is: " + fname);
+		
+		
+		
+		
+		
+		reader.close();
+		
+	}
+}

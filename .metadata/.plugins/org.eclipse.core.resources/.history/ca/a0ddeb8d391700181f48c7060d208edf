@@ -1,0 +1,47 @@
+package account;
+
+import java.io.*;
+import java.util.Scanner;
+
+public class Input {
+	public Input() {
+		super();
+	}
+	
+	public static void display() {
+		
+		
+		
+		
+		Scanner reader = new Scanner(System.in);
+		
+		System.out.println("Please enter your account number: ");
+		int n = reader.nextInt();
+		
+		Account accObj = new Account();
+		accObj.setAccount(n);
+		
+		System.out.println("The number you entered is: " + accObj.getAccount());
+		reader.nextLine();
+		
+		System.out.println("Please enter your first name: ");
+		String fname = reader.nextLine();
+		
+		
+		accObj.setFName(fname);
+		System.out.println("Your first name is: " + accObj.getFName());
+		
+		System.out.println("Please enter your last name: ");
+		String lname = reader.nextLine();
+		
+		accObj.setLName(lname);
+		System.out.println("Your last name is: " + accObj.getLName());
+		
+		
+		
+		
+		
+		reader.close();
+		
+	}
+}

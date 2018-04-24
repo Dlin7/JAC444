@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<session version="1.0">
+<refactoring comment="Rename compilation unit &apos;shapes.ShapeProperty.java&apos; to &apos;Shapes.java&apos;&#x0D;&#x0A;- Original project: &apos;Workshop1&apos;&#x0D;&#x0A;- Original element: &apos;shapes.ShapeProperty.java&apos;&#x0D;&#x0A;- Renamed element: &apos;shapes.Shapes.java&apos;" description="Rename compilation unit &apos;ShapeProperty.java&apos;" flags="2" id="org.eclipse.jdt.ui.rename.compilationunit" input="/src&lt;shapes{ShapeProperty.java" name="Shapes.java" references="false" stamp="1520909675256" version="1.0"/>
+</session>

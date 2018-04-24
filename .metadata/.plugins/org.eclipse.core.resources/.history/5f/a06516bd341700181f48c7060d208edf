@@ -1,0 +1,11 @@
+package account;
+
+public class Input {
+	public Input() {
+		super();
+	}
+	
+	public void display() {
+		
+	}
+}

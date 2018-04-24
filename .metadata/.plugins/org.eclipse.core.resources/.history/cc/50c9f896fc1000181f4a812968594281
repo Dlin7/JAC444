@@ -1,0 +1,228 @@
+package shapes;
+
+import java.io.IOException;
+import java.security.InvalidParameterException;
+import java.io.FileReader;
+import java.io.BufferedReader;
+
+
+
+public class Main {
+	public static void main(String[] args) {
+		
+		String s;
+		//ArrayList<Shape> shapes = new ArrayList<Shape>();
+		Shape[] shapes = new Shape[32];
+		int count = 0;
+		
+		System.out.println("------->JAC 444 Assignment 1<-------");
+		System.out.println("------->Task 2 ... <-------");
+		
+		
+		try (BufferedReader br = new BufferedReader(new FileReader("shapes.txt"))) {
+			while ((s = br.readLine()) != null) {
+			String[] tokens = s.split(",");
+			//your code
+			//for (int i = 0; i < shapes.length; i++) {
+					if (tokens[0].equals("Circle") && tokens.length == 2) {
+						double cirParam = Double.parseDouble(tokens[1]);
+						
+						if (cirParam > 0) {
+							Circle cirObj = new Circle();
+							//shapes.add(cirObj);
+							cirObj.setRadius(cirParam);
+							
+							shapes[count++] = cirObj;
+							
+							
+							
+							
+						}
+						else {
+							System.out.println("Invalid radius!");
+						}
+						
+
+					
+					}
+					else if (tokens[0].equals("Square") && tokens.length == 2) {
+						double squParam = Double.parseDouble(tokens[1]);
+						
+						if (squParam > 0) {
+							Square squObj = new Square();
+							//shapes.add(squObj);
+							
+							
+							shapes[count++] = squObj;
+							
+							
+							
+							squObj.setWidth(squParam);
+						}
+						else {
+							System.out.println("Invalid side!");
+						}
+						
+					}
+					else if (tokens[0].equals("Rectangle") && tokens.length == 3) {
+						double recParam1 = Double.parseDouble(tokens[1]);
+						double recParam2 = Double.parseDouble(tokens[2]);
+						
+						if (recParam1 > 0 && recParam2 > 0) {
+							Rectangle recObj = new Rectangle();
+							//shapes.add(recObj);
+							recObj.setWidth(recParam1, recParam2);
+							
+							
+							shapes[count++] = recObj;
+							
+							
+
+						}
+						else {
+							System.out.println("Invalid side(s)!");
+						}
+						
+					}
+					else if (tokens[0].equals("Triangle") && tokens.length == 4) {
+						double triParam1 = Double.parseDouble(tokens[1]);
+						double triParam2 = Double.parseDouble(tokens[2]);
+						double triParam3 = Double.parseDouble(tokens[3]);
+						
+						if (triParam1 > 0 && triParam2 > 0 && triParam3 > 0) {
+							Triangle triObj = new Triangle();
+	
+							try {
+								triObj.validate(triParam1, triParam2, triParam3);
+							} catch (InvalidParameterException e) {
+								System.out.println("Invalid Parameters for Triangle!");
+							}
+							
+							
+							if (triObj.validate(triParam1, triParam2, triParam3) == true) {
+								//shapes.add(triObj);
+								triObj.setWidth(triParam1, triParam2, triParam3);
+								shapes[count++] = triObj;
+								
+								
+
+							}
+							else {
+								System.out.println("Invalid side(s)!");
+							}
+						}
+						else {
+							System.out.println("Invalid side(s)!");
+						}
+
+						
+					}
+					else if (tokens[0].equals("Parallelogram") && tokens.length == 3) {
+						double parParam1 = Double.parseDouble(tokens[1]);
+						double parParam2 = Double.parseDouble(tokens[2]);
+						
+						if (parParam1 > 0 && parParam2 > 0) {
+							Parallelogram parObj = new Parallelogram();
+							//shapes.add(parObj);
+							
+							shapes[count++] = parObj;
+							
+							parObj.setWidth(parParam1, parParam2);
+
+						}
+						else {
+							System.out.println("Invalid side(s)!");
+						}
+					}
+			//}
+			}
+		} catch (IOException e) {
+			System.out.println(e.getMessage());
+		}
+		
+
+		//System.out.println(getLowestPerimeter(shapes));
+		removeLowestPerimeter(getLowestPerimeter(shapes, 'T'), shapes, 'T', count);
+		
+		//System.out.println(getHighestPerimeter(shapes));
+		removeHighestPerimeter(getHighestPerimeter(shapes, 'C'), shapes, 'C', count);
+		
+		System.out.println("\n" + shapes.length + " shapes were created:");
+		
+		for (int i = 0; i < shapes.length; i++) {
+			System.out.println(shapes[i].toString());
+		}	
+
+		System.out.println(count);
+	}
+	
+	public static double getLowestPerimeter(Shape[] objectArray, char shape) {
+		//lowest Triangle perimeter
+		double lowestPerimeter = 1000;
+		
+		for (int i = 0; i < objectArray.length; i++) {
+			if (objectArray[i].toString().indexOf(shape) == 0) {
+				if (objectArray[i].perimeter() < lowestPerimeter) {
+					lowestPerimeter = objectArray[i].perimeter();
+
+					//System.out.println(lowestPerimeter);
+				}
+			}
+		}
+		
+		return lowestPerimeter;
+	}
+	
+	public static void removeLowestPerimeter(double perimeter, Shape[] objectArray, char shape, int count) {
+		for (int i = 0; i < objectArray.length; i++) {
+			if (objectArray[i].toString().indexOf(shape) == 0) {
+				if (objectArray[i].perimeter() == perimeter) {
+					//objectArray.remove(i);
+					//objectArray = ArrayUtils.remove(objectArray, i);
+					
+					int removeIndex = i;
+
+					for(int j = removeIndex; j < objectArray.length -1; j++){
+					     objectArray[j] = objectArray[j + 1];
+					}
+				}
+			}
+		}
+		
+		count = count - 1;
+	}
+	
+	public static double getHighestPerimeter(Shape[] objectArray, char shape) {
+		//highest Circle perimeter
+		double highestPerimeter = 0;
+		
+		for (int i = 0; i < objectArray.length; i++) {
+			if (objectArray[i].toString().indexOf(shape) == 0) {
+				if (objectArray[i].perimeter() > highestPerimeter) {
+					highestPerimeter = objectArray[i].perimeter();
+					
+					//System.out.println(highestPerimeter);
+				}
+			}
+		}
+		
+		return highestPerimeter;
+	}
+	
+	public static void removeHighestPerimeter(double perimeter, Shape[] objectArray, char shape, int count) {
+		for (int i = 0; i < objectArray.length; i++) {
+			if (objectArray[i].toString().indexOf(shape) == 0) {
+				if (objectArray[i].perimeter() == perimeter) {
+					//objectArray.remove(i);
+					int removeIndex = i;
+
+					for(int j = removeIndex; j < objectArray.length -1; j++){
+					    objectArray[j] = objectArray[j + 1];
+					}
+				}
+			}
+		}
+		
+		count = count - 1;
+	}
+}

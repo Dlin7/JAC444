@@ -1,0 +1,15 @@
+package account;
+
+
+
+public class Main {
+	public static void main(String[] args) {
+		int index = 0;
+
+
+		Input.enterInput(index++);
+
+		
+		System.out.println(index);
+	}
+}

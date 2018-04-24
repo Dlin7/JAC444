@@ -1,0 +1,153 @@
+package shapes;
+
+import java.io.IOException;
+import java.io.FileReader;
+import java.io.BufferedReader;
+
+public class Main {
+	public static void main(String[] args) {
+		//Shape[] shapes = new Shape[3];
+		//shapes[0] = new Rectangle(2.4, 1.5);
+		//shapes[1] = new Square(3.7);
+		//shapes[2] = new Cube(4.8);
+		//While checking the output, pay attention to constructor chaining too!
+		
+		String s;
+		
+		System.out.println("------->JAC 444 Assignment 1<-------");
+		System.out.println("------->Task 1 ... <-------\n");
+		
+		
+		try (BufferedReader br = new BufferedReader(new FileReader("shapes.txt"))) {
+			while ((s = br.readLine()) != null) {
+			String[] tokens = s.split(",");
+			//your code
+			
+
+					//System.out.println(tokens[0]);
+					//Shape[] shapes = new Shape[5];
+					Shape[] shapes = new Shape[5];
+					
+					if (tokens[0].equals("Circle")) {
+						double cirParam = Double.parseDouble(tokens[0 + 1]);
+						
+						
+						if (cirParam > 0) {
+							Circle cirObj = new Circle();
+							shapes[0] = cirObj;
+							System.out.println(shapes[0].radius);
+							
+							
+							
+							cirObj.setRadius(cirParam);
+							double radius = cirObj.getRadius();
+							double perimeter = cirObj.perimeter();
+							System.out.printf("Circle {r=%.1f} perimeter = %.4f\n\n", radius, perimeter);
+						}
+						else {
+							System.out.println("Invalid radius!\n");
+						}
+						
+						//System.out.println("Circle Params");
+						//System.out.println(cirParam);
+						//System.out.println("Circle Count:" + Circle.count);
+					}
+					else if (tokens[0].equals("Square")) {
+						double squParam = Double.parseDouble(tokens[0 + 1]);
+						
+						if (squParam > 0) {
+							Square squObj = new Square();
+							
+							squObj.setWidth(squParam);
+							double width = squObj.getWidth();
+							double perimeter = squObj.perimeter();
+							System.out.printf("Square {w=%.1f} perimeter = %.4f\n\n", width, perimeter);
+						}
+						else {
+							System.out.println("Invalid side!\n");
+						}
+						
+						//System.out.println("Square Params");
+						//System.out.println(squParam);
+						//System.out.println("Square Count:" + Square.count);
+					}
+					else if (tokens[0].equals("Rectangle")) {
+						double recParam1 = Double.parseDouble(tokens[0 + 1]);
+						double recParam2 = Double.parseDouble(tokens[0 + 2]);
+						
+						if (recParam1 > 0 && recParam2 > 0) {
+							Rectangle recObj = new Rectangle();
+							
+							recObj.setWidth(recParam1);
+							recObj.setLength(recParam2);
+							double width = recObj.getWidth();
+							double length = recObj.getLength();
+							double perimeter = recObj.perimeter();
+							System.out.printf("Rectangle {w=%.1f, h=%.1f} perimeter = %.4f\n\n", width, length, perimeter);
+						}
+						else {
+							System.out.println("Invalid side(s)!\n");
+						}
+						
+						//System.out.println("Rectangle Params");
+						//System.out.printf("%.1f, %.1f\n", recParam1, recParam2);
+						//System.out.println("Rectangle Count:" + Rectangle.count);
+					}
+					else if (tokens[0].equals("Triangle")) {
+						double triParam1 = Double.parseDouble(tokens[0 + 1]);
+						double triParam2 = Double.parseDouble(tokens[0 + 2]);
+						double triParam3 = Double.parseDouble(tokens[0 + 3]);
+						
+						if (triParam1 > 0 && triParam2 > 0 && triParam3 > 0) {
+							Triangle triObj = new Triangle();
+							
+							triObj.setWidth(triParam1, triParam2, triParam3);
+							double width = triObj.getWidth();
+							double length = triObj.getLength();
+							double side = triObj.getSide();
+							double perimeter = triObj.perimeter();
+							System.out.printf("Triangle {s1=%.1f, s2=%.1f, s3=%.1f} perimeter = %.4f\n\n", width, length, side, perimeter);
+						}
+						else {
+							System.out.println("Invalid side(s)!\n");
+						}
+						
+						//System.out.println("Triangle Params");
+						//System.out.printf("%.1f, %.1f, %.1f\n", triParam1, triParam2, triParam3);
+						//System.out.println("Triangle Count:" + Triangle.count);
+					}
+					else if (tokens[0].equals("Parallelogram")) {
+						double parParam1 = Double.parseDouble(tokens[0 + 1]);
+						double parParam2 = Double.parseDouble(tokens[0 + 2]);
+						
+						if (parParam1 > 0 && parParam2 > 0) {
+							Parallelogram parObj = new Parallelogram();
+							
+							parObj.setWidth(parParam1);
+							parObj.setLength(parParam2);
+							double width = parObj.getWidth();
+							double length = parObj.getLength();
+							double perimeter = parObj.perimeter();
+							System.out.printf("Parallelogram {w=%.1f, h=%.1f} perimeter = %.4f\n\n", width, length, perimeter);
+						}
+						else {
+							System.out.println("Invalid side(s)!\n");
+						}
+						
+						//System.out.println("Parallelogram Params");
+						//System.out.printf("%.1f, %.1f\n", parParam1, parParam2);
+						//System.out.println("Parellelogram Count:" + Parallelogram.count);
+					}
+			}
+		} catch (IOException e) {
+			System.out.println(e.getMessage());
+		}
+		
+		System.out.println(Circle.count + Triangle.count + Square.count + Parallelogram.count + Rectangle.count + " shapes were created:");
+		
+	}
+	
+	public void print() {
+		
+	}
+}

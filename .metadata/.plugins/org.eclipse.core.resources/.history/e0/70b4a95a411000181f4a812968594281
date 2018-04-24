@@ -1,0 +1,44 @@
+package shapes;
+
+public class Circle implements Shape {
+	private double radius;
+	static int count;
+	
+	public Circle(double radius) {
+		this.radius = radius;
+		//count++;
+	}
+	public Circle() {
+	}
+	
+	//Getters
+	public double getRadius() {
+		return radius;
+	}
+	
+	//Setters
+	public void setRadius(double radius) {
+		this.radius = radius;
+	}
+
+	
+	//Perimeter
+	public double perimeter() {
+		return getRadius() * 2 * Math.PI;
+	}
+	@Override
+	public double getLength() {
+		// TODO Auto-generated method stub
+		return 0;
+	}
+	@Override
+	public double getWidth() {
+		// TODO Auto-generated method stub
+		return 0;
+	}
+	@Override
+	public double getSide() {
+		// TODO Auto-generated method stub
+		return 0;
+	}
+}

@@ -1,0 +1,25 @@
+package account;
+
+import java.util.Scanner;
+
+public class Main {
+	public static void main(String[] args) {
+		int index = 0;
+
+		Scanner menu = new Scanner(System.in);
+		
+
+		System.out.println("1. Create new account");
+		int n = menu.nextInt();
+		
+		while (n == 1) {
+			Account[] accObj = new Account[100];
+			accObj[index++] = new Account();
+			Input.enterInput(index, accObj);
+		}
+		
+		System.out.println(index);
+	}
+	
+
+}

@@ -1,0 +1,48 @@
+package shapes;
+
+public class Square extends Rectangle {
+	double width;
+	static int count;
+	
+	public Square(double width) {
+		this.width = width;
+
+	}
+	
+	public Square() {
+
+	}
+	
+	public double getWidth() {
+		return width;
+	}
+	
+	
+	public void setWidth(double width) {
+		this.width = width;
+		count++;
+	}
+	
+	@Override
+	public double perimeter() {
+		return getWidth() * 4;
+	}
+
+	@Override
+	public double getLength() {
+		// TODO Auto-generated method stub
+		return 0;
+	}
+
+	@Override
+	public double getSide() {
+		// TODO Auto-generated method stub
+		return 0;
+	}
+
+	@Override
+	public double getRadius() {
+		// TODO Auto-generated method stub
+		return 0;
+	}
+}

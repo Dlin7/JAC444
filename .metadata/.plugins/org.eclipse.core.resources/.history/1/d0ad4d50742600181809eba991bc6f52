@@ -1,0 +1,6 @@
+package shapes;
+
+@FunctionalInterface
+public interface Area {
+	double calculateArea(int x, int y);
+}

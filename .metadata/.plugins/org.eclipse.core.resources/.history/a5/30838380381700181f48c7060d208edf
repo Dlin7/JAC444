@@ -1,0 +1,8 @@
+package account;
+
+public class Account {
+	int account = 0;
+	String firstName = "";
+	String lastName = "";
+	double balance = 0;
+}

@@ -1,0 +1,52 @@
+package shapes;
+
+public class Parallelogram implements Shape {
+	double width;
+	double length;
+	static int count;
+	
+	public Parallelogram(double width, double height) {
+		this.width = width;
+		this.length = height;
+	}
+	
+	public Parallelogram() {
+		count++;
+	}
+	
+	//Getters
+	public double getWidth() {
+		return this.width;
+	}
+	
+	public double getLength() {
+		return this.length;
+	}
+	
+	//Setters
+	public void setWidth(double width) {
+		this.width = width;
+	}
+	
+	public void setLength(double height) {
+		this.length = height;
+	}
+	
+	//Perimeter
+	@Override
+	public double perimeter() {
+		return (getWidth() * 2) + (getLength() * 2);
+	}
+
+	@Override
+	public double getSide() {
+		// TODO Auto-generated method stub
+		return 0;
+	}
+
+	@Override
+	public double getRadius() {
+		// TODO Auto-generated method stub
+		return 0;
+	}
+}

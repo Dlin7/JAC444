@@ -1,0 +1,45 @@
+package account;
+
+import java.sql.*;
+
+public class InsertAccounts {
+	public static void main(String args[]) {
+		Connection con = null;
+		Statement stmt = null;
+		
+		try {
+			// 2. Get connection and statements objects
+			con = DriverManager.getConnection(Values.URL, Values.USER_NAME, Values.PASS_WORD);
+			stmt = con.createStatement();
+
+			// 3. Execute JDBC commands
+			stmt.executeUpdate("insert into Accounts " + "values(200, 'David', 'Lin', 4534)");
+
+
+			ResultSet rs = stmt.executeQuery("select ACCOUNT, FNAME, LNAME, BALANCE from Accounts");
+
+			System.out.println("Account ID, USER and BALANCE:");
+			while (rs.next()) {
+				String s = rs.getString("ACCOUNT");
+				String fn = rs.getString("FNAME");
+				String ln = rs.getString("LNAME");
+				float f = rs.getFloat("BALANCE");
+				System.out.println(s + " \t  " + fn + "\t" + ln + "\t" + f);
+			}
+		} catch (SQLException ex) {
+			System.err.println("SQLException: " + ex.getMessage());
+		} finally {
+			try {
+				// 4. Close the connection and statement
+				if (stmt != null)
+					stmt.close();
+
+				if (con != null)
+					con.close();
+			} catch (Exception ex) {
+				System.err.println("SQLException: " + ex.getMessage());
+			}
+		}
+		
+	}
+}

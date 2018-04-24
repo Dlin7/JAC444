@@ -1,0 +1,66 @@
+package account;
+
+import java.io.IOException;
+import java.sql.*;
+import java.util.NoSuchElementException;
+import java.util.Scanner;
+import java.io.IOException;
+
+public class InsertAccounts {
+	public static void main(String args[]) {
+		Connection con = null;
+		Statement stmt = null;
+		
+		Scanner input = new Scanner(System.in);
+	    System.out.printf("%s%n%s%n? ",
+		"Enter account number, first name, last name and balance.",
+		"Enter end-of-file indicator to end input.");
+	    
+		while (input.hasNext()) 
+		{
+		   try{
+			Account record = new Account(input.nextInt(), input.next(), input.next(), input.nextDouble());
+			
+			System.out.println(record.getAccount());
+			System.out.println(record.getFName());
+			System.out.println(record.getLName());
+			System.out.println(record.getBalance());
+
+			try {
+				// 2. Get connection and statements objects
+				con = DriverManager.getConnection(Values.URL, Values.USER_NAME, Values.PASS_WORD);
+				stmt = con.createStatement();
+
+				// 3. Execute JDBC commands
+				stmt.executeUpdate("insert into Accounts " + "values(" + record.getAccount() + ", '" 
+				+ record.getFName() + "', '" + record.getLName() + "', " + record.getBalance());
+
+			} catch (SQLException ex) {
+				System.err.println("SQLException: " + ex.getMessage());
+			} finally {
+				try {
+					// 4. Close the connection and statement
+					if (stmt != null)
+						stmt.close();
+
+					if (con != null)
+						con.close();
+				} catch (Exception ex) {
+					System.err.println("SQLException: " + ex.getMessage());
+				}
+			}
+			
+		    }catch (NoSuchElementException elementException){
+		    	System.err.println("Invalid input. Please try again.");
+				input.nextLine(); 
+			}catch (IOException ioException){
+				System.err.println("Error writing to file. Terminating.");
+				System.err.println(ioException);
+				break;
+			} System.out.print("? ");
+		}
+		
+
+		
+	}
+}

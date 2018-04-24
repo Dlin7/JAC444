@@ -1,0 +1,140 @@
+package shapes;
+
+import java.io.IOException;
+import java.io.FileReader;
+import java.io.BufferedReader;
+import java.util.ArrayList;;
+
+public class Main {
+	public static void main(String[] args) {
+		//Shape[] shapes = new Shape[3];
+		//shapes[0] = new Rectangle(2.4, 1.5);
+		//shapes[1] = new Square(3.7);
+		//shapes[2] = new Cube(4.8);
+		//While checking the output, pay attention to constructor chaining too!
+		
+		String s;
+		ArrayList<Shape> shapes = new ArrayList<Shape>();
+		
+		System.out.println("------->JAC 444 Assignment 1<-------");
+		System.out.println("------->Task 1 ... <-------");
+		
+		
+		try (BufferedReader br = new BufferedReader(new FileReader("shapes.txt"))) {
+			while ((s = br.readLine()) != null) {
+			String[] tokens = s.split(",");
+			//your code
+			
+
+					
+					
+					
+					if (tokens[0].equals("Circle") && tokens.length == 2) {
+						double cirParam = Double.parseDouble(tokens[1]);
+						
+						
+						if (cirParam > 0) {
+							Circle cirObj = new Circle();
+							shapes.add(cirObj);
+							
+							
+							
+							
+							cirObj.setRadius(cirParam);
+						}
+						else {
+							System.out.println("Invalid radius!");
+						}
+					
+					}
+					else if (tokens[0].equals("Square") && tokens.length == 2) {
+						double squParam = Double.parseDouble(tokens[1]);
+						
+						if (squParam > 0) {
+							Square squObj = new Square();
+							shapes.add(squObj);
+							
+							squObj.setWidth(squParam);
+						}
+						else {
+							System.out.println("Invalid side!");
+						}
+						
+					}
+					else if (tokens[0].equals("Rectangle") && tokens.length == 3) {
+						double recParam1 = Double.parseDouble(tokens[1]);
+						double recParam2 = Double.parseDouble(tokens[2]);
+						
+						if (recParam1 > 0 && recParam2 > 0) {
+							Rectangle recObj = new Rectangle();
+							shapes.add(recObj);
+							
+							recObj.setWidth(recParam1, recParam2);
+
+							//System.out.printf(recObj.toString());
+						}
+						else {
+							System.out.println("Invalid side(s)!");
+						}
+						
+					}
+					else if (tokens[0].equals("Triangle") && tokens.length == 4) {
+						double triParam1 = Double.parseDouble(tokens[1]);
+						double triParam2 = Double.parseDouble(tokens[2]);
+						double triParam3 = Double.parseDouble(tokens[3]);
+						
+						
+						
+						if (triParam1 > 0 && triParam2 > 0 && triParam3 > 0) {
+							Triangle triObj = new Triangle();
+							
+							
+							if (triObj.validate(triParam1, triParam2, triParam3) == true) {
+								shapes.add(triObj);
+								triObj.setWidth(triParam1, triParam2, triParam3);
+
+							}
+							else {
+								System.out.println("Invalid side(s)!");
+							}
+						}
+						else {
+							System.out.println("Invalid side(s)!");
+						}
+						
+					}
+					else if (tokens[0].equals("Parallelogram") && tokens.length == 3) {
+						double parParam1 = Double.parseDouble(tokens[1]);
+						double parParam2 = Double.parseDouble(tokens[2]);
+						
+						if (parParam1 > 0 && parParam2 > 0) {
+							Parallelogram parObj = new Parallelogram();
+							shapes.add(parObj);
+							
+							parObj.setWidth(parParam1, parParam2);
+
+							//System.out.printf(parObj.toString());
+						}
+						else {
+							System.out.println("Invalid side(s)!");
+						}
+
+					}
+					
+					
+			}
+		} catch (IOException e) {
+			System.out.println(e.getMessage());
+		}
+		
+		System.out.println("\n" + shapes.size() + " shapes were created:");
+		
+		for (int i = 0; i < shapes.size(); i++) {
+			System.out.println(shapes.get(i).toString());
+		}
+	}
+	
+	public void print() {
+		
+	}
+}

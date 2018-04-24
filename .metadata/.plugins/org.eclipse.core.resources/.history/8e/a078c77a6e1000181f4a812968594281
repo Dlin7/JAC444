@@ -1,0 +1,45 @@
+package shapes;
+
+public class Rectangle extends Parallelogram {
+	private double width;
+	private double length;
+	
+	public Rectangle(double width, double height) {
+		this.width = width;
+		this.length = height;
+	}
+	
+	public Rectangle() {
+		super();
+	}
+	
+	
+	//Setters
+	public void setWidth(double width, double length) {
+		this.width = width;
+		this.length = length;
+	}
+	
+	//Perimeter
+	@Override
+	public double perimeter() {
+		return (width * 2) + (length * 2);
+	}
+
+	@Override
+	public double getSide() {
+		// TODO Auto-generated method stub
+		return 0;
+	}
+
+	@Override
+	public double getRadius() {
+		// TODO Auto-generated method stub
+		return 0;
+	}
+	
+	public String toString() {
+		return ("Rectangle {w=" + width + ", " + "h=" + length + "} perimeter = " + (Math.round(perimeter() *10000.0) / 10000.0) + "\n");
+	}
+	
+}

@@ -1,0 +1,15 @@
+package account;
+
+import java.io.*;
+import java.util.Scanner;
+
+public class Input {
+	public Input() {
+		super();
+	}
+	
+	public static void display() {
+		
+
+	}
+}

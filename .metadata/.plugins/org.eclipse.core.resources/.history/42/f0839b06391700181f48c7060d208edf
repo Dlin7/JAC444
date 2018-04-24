@@ -1,0 +1,20 @@
+package account;
+
+public class Account {
+	int account = 0;
+	String firstName = "";
+	String lastName = "";
+	double balance = 0;
+	
+	public void setAccount(int num) {
+		this.account = num;
+	}
+	
+	public void setFName(String fname) {
+		this.firstName = fname;
+	}
+	
+	public void setLName(String lname) {
+		this.lastName = lname;
+	}
+}

@@ -1,0 +1,8 @@
+package account;
+
+public class Values {
+	public static final String DRIVER_CLASS_MYSQL = "com.mysql.jdbc.Driver";
+	public static final String URL = "jdbc:mysql://127.0.0.1:3306/Workshop7DB";
+	public static final String USER_NAME = "root";
+	public static final String PASS_WORD = "q9w8e7rt";
+}

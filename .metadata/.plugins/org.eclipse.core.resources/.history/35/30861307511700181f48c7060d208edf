@@ -1,0 +1,48 @@
+package account;
+
+
+import java.util.Scanner;
+
+public class Input {
+	public Input() {
+		super();
+	}
+	
+	public static void enterInput(int index, Account[] obj) {
+		
+		Scanner reader = new Scanner(System.in);
+		
+		//Account Number
+		System.out.println("Please enter your account number: ");
+		int n = reader.nextInt();
+		
+
+		
+		obj[index] = new Account();
+
+		obj[index].setAccount(n);
+		
+		System.out.println("The number you entered is: " + obj[index].getAccount());
+		reader.nextLine();
+		
+		//First Name
+		System.out.println("Please enter your first name: ");
+		String fname = reader.nextLine();
+		
+		obj[index].setFName(fname);
+		System.out.println("Your first name is: " + obj[index].getFName());
+		
+		//Last Name
+		System.out.println("Please enter your last name: ");
+		String lname = reader.nextLine();
+		
+		obj[index].setLName(lname);
+		System.out.println("Your last name is: " + obj[index].getLName());	
+		
+		System.out.println("Account " + index + " created");
+
+
+		reader.close();
+	}
+
+}

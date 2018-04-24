@@ -1,0 +1,30 @@
+package shapes;
+
+public interface Shape {
+	double radius = 0;
+	double side = 0;
+	double width = 0;
+	double length = 0;
+	static int count = 0;
+	
+	public default int getCount() {
+		return count;
+	}
+	
+	public default void setCount(int newCount) {
+		count = newCount;
+	}
+	
+	Shape[] shapes = new Shape[32];
+	static int nextIndex = 0;
+	
+	public double perimeter();;
+	
+	
+	
+	public void push(Shape e);
+
+	public int pop();
+	
+
+}

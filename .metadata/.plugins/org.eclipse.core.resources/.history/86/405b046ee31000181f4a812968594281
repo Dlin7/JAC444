@@ -1,0 +1,38 @@
+package shapes;
+
+public class Circle implements Shape {
+	private double radius;
+	
+	public Circle(double radius) {
+		this.radius = radius;
+	}
+	public Circle() {
+		super();
+	}
+	
+	//Setters
+	public void setRadius(double radius) {
+		this.radius = radius;
+	}
+
+	
+	//Perimeter
+	public double perimeter() {
+		return radius * 2 * Math.PI;
+	}
+	
+	public String toString() {
+		return ("Circle {r=" + radius + "} perimeter = " + (Math.round(perimeter() *10000.0) / 10000.0) + "\n");
+	}
+	@Override
+	public void push(Shape e) {
+	    shapes[nextIndex] = e;
+	    ++nextIndex;
+		
+	}
+	@Override
+	public int pop() {
+		// TODO Auto-generated method stub
+		return 0;
+	}
+}
